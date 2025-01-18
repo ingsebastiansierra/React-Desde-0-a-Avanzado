@@ -1,29 +1,24 @@
-import { useState } from 'react'
-import { Button } from './components'
-import './App.css'
+import "./App.css";
+import { Button, ColorRed } from "./components";
+import { GlobalProvider } from "./Context/global.provider";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  // batching
-
-  const countMore = () => {
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-    setCount((count) => count + 1)
-  }
+  const handleClick = () => {
+    console.log("clicking todo");
+  };
+  const dimeHola = () => {
+    alert("Hola !!!!!");
+  };
 
   return (
-    <>
-      <Button label={`Count is ${count}`} parentMethod={countMore} />
-    </>
-  )
+    <GlobalProvider>
+      <ColorRed>
+        <Button parentMethod={dimeHola}>My Boton Rojo</Button>
+      </ColorRed>
+      <Button parentMethod={handleClick}>My boton normal</Button>
+    </GlobalProvider>
+  );
 }
+export default App;
 
-export default App
+// batching
